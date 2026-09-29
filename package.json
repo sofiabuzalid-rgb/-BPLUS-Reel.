@@ -1,0 +1,24 @@
+{
+  "name": "bplus-reel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BPLUS eyewear — fashion film vertical 9:16 en Remotion",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render BplusReel out/bplus-reel.mp4",
+    "still": "remotion still BplusReel out/still.png"
+  },
+  "dependencies": {
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@remotion/cli": "^4.0.529",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.529"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}
