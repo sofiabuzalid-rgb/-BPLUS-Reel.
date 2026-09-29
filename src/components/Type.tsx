@@ -31,7 +31,7 @@ export const BigLine: React.FC = () => {
   const base: React.CSSProperties = {
     position: 'absolute',
     fontFamily: FONTS.serif,
-    color: COLORS.bone,
+    color: COLORS.accent,
     lineHeight: 0.82,
     whiteSpace: 'nowrap',
     letterSpacing: '-0.025em',

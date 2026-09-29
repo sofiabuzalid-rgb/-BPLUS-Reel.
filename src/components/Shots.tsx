@@ -10,9 +10,12 @@ export const PhotoShotView: React.FC<{shot: PhotoShot}> = ({shot}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const m = resolveMove(frame, shot.dur, shot.move, fps);
+  // overexposure pulse: blows out on the frame, burns back over ~4 frames
+  const burn = Math.max(0, ...(shot.strobe ?? []).map((s) => [0.95, 0.55, 0.25, 0.08][frame - s] ?? 0));
   return (
     <AbsoluteFill>
-      <Photo slot={shot.slot} width={WIDTH} height={HEIGHT} scale={m.scale} x={m.x} y={m.y} exposure={shot.exposure} />
+      <Photo slot={shot.slot} width={WIDTH} height={HEIGHT} scale={m.scale} x={m.x} y={m.y} exposure={(shot.exposure ?? 1) * (1 + burn)} />
+      {burn > 0 && <AbsoluteFill style={{background: '#F3F0E6', opacity: burn * 0.4}} />}
     </AbsoluteFill>
   );
 };
@@ -79,7 +82,7 @@ export const GridShotView: React.FC<{shot: GridShot}> = ({shot}) => {
                   color: '#2a2724',
                 }}
               >
-                Nº0{i + 1}
+                {`Nº0${i + 1}`.slice(0, Math.max(0, Math.floor((local - 3) / 2)))}
               </div>
             </React.Fragment>
           );
@@ -104,7 +107,7 @@ export const EndShotView: React.FC<{shot: EndShot}> = () => {
             fontSize: 380,
             lineHeight: 0.8,
             letterSpacing: '-0.02em',
-            color: COLORS.bone,
+            color: COLORS.accent,
           }}
         >
           {COPY.brand}

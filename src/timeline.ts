@@ -31,6 +31,8 @@ export type PhotoShot = {
   move: Move;
   exposure?: number;
   flash?: boolean;
+  /** Local frames where the exposure blows out and burns back down (strobe). */
+  strobe?: number[];
 };
 
 export type SplitShot = {
@@ -66,7 +68,7 @@ export const TIMELINE: Shot[] = [
   {kind: 'photo', dur: 7, slot: 'OPEN', move: {scale: [1.9, 1.9]}, exposure: 1.05},
 
   // 0:03–0:05 — hero, slow move. Big serif enters from the side (overlay).
-  {kind: 'photo', dur: 60, slot: 'HERO_B', move: {scale: [1.09, 1.03], y: [0, -24], ease: 'inOut'}, flash: true},
+  {kind: 'photo', dur: 60, slot: 'HERO_B', move: {scale: [1.09, 1.03], y: [0, -24], ease: 'inOut'}, flash: true, strobe: [40, 51]},
 
   // 0:05–0:08 — full → detail → other colour → detail → full → freeze.
   {kind: 'photo', dur: 20, slot: 'HERO_C', move: {scale: [1.05, 1.0], ease: 'inOut'}},
@@ -81,7 +83,7 @@ export const TIMELINE: Shot[] = [
 
   // 0:11–0:14 — back to heroes, crops and zooms.
   {kind: 'photo', dur: 15, slot: 'HERO_B', move: {scale: [1.75, 1.68], ease: 'snap'}},
-  {kind: 'photo', dur: 20, slot: 'HERO_C', move: {scale: [1.0, 1.04], ease: 'linear'}, exposure: 1.03},
+  {kind: 'photo', dur: 20, slot: 'HERO_C', move: {scale: [1.0, 1.04], ease: 'linear'}, exposure: 1.03, strobe: [3, 9, 14]},
   {kind: 'photo', dur: 12, slot: 'DET_3', move: {scale: [4.0, 4.12], ease: 'linear'}, exposure: 0.95},
   {kind: 'split', dur: 25, slots: ['HERO_D', 'HERO_E']},
   {kind: 'photo', dur: 6, slot: 'DET_2', move: {scale: [2.4, 2.4]}, exposure: 1.06},

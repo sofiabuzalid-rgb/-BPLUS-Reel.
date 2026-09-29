@@ -11,6 +11,7 @@ export const COLORS = {
   ink: '#0E0D0C', // deep black for the end card
   paper: '#E7E3DA', // warm off-white for the catalogue page
   bone: '#F2EEE6', // type colour over photos
+  accent: '#E8D66A', // warm mustard for the big serif moments
 };
 
 export const FONTS = {
