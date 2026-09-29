@@ -12,6 +12,8 @@ export const COLORS = {
   paper: '#E7E3DA', // warm off-white for the catalogue page
   bone: '#F2EEE6', // type colour over photos
   accent: '#E8D66A', // warm mustard for the big serif moments
+  // the product photos sit on a light studio backdrop, so type over them is dark
+  typeOnPhoto: '#141312',
 };
 
 export const FONTS = {

@@ -8,12 +8,12 @@ export const OpenMark: React.FC = () => {
   return (
     <AbsoluteFill>
       {frame >= 3 && (
-        <div style={{position: 'absolute', left: 64, top: 96, fontFamily: FONTS.sans, fontWeight: 500, fontSize: 30, letterSpacing: '0.42em', color: COLORS.bone}}>
+        <div style={{position: 'absolute', left: 64, top: 96, fontFamily: FONTS.sans, fontWeight: 500, fontSize: 30, letterSpacing: '0.42em', color: COLORS.typeOnPhoto}}>
           {COPY.brand}
         </div>
       )}
       {frame >= 12 && (
-        <div style={{position: 'absolute', right: 64, bottom: 118, fontFamily: FONTS.mono, fontSize: 19, letterSpacing: '0.16em', textTransform: 'uppercase', color: COLORS.bone}}>
+        <div style={{position: 'absolute', right: 64, bottom: 118, fontFamily: FONTS.mono, fontSize: 19, letterSpacing: '0.16em', textTransform: 'uppercase', color: COLORS.typeOnPhoto}}>
           {COPY.openTag}
         </div>
       )}
@@ -31,7 +31,7 @@ export const BigLine: React.FC = () => {
   const base: React.CSSProperties = {
     position: 'absolute',
     fontFamily: FONTS.serif,
-    color: COLORS.accent,
+    color: COLORS.typeOnPhoto,
     lineHeight: 0.82,
     whiteSpace: 'nowrap',
     letterSpacing: '-0.025em',

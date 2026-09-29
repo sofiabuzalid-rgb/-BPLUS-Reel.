@@ -28,31 +28,32 @@ const clamp = (t: number, s: number, origin: number, size: number) => {
  * never hue or saturation, so the frame colours stay true.
  */
 export const Photo: React.FC<Props> = ({slot, width, height, scale, x = 0, y = 0, exposure = 1, compactPlaceholder}) => {
-  const {file, focus, role} = CASTING[slot];
-  const s = Math.max(1, scale);
+  const {file, focus, role, fit = 'cover', bg = '#111', aspect = 1, top = 50, zoom = 1} = CASTING[slot];
+  // `zoom` tempers the timeline's punch-ins for photos that can't take them (low res)
+  const s = Math.max(1, 1 + (scale - 1) * zoom);
+  // 'width' fit: whole photo across the frame, seamless studio backdrop extended around it
+  const imgH = width / aspect;
   const ox = (focus[0] / 100) * width;
-  const oy = (focus[1] / 100) * height;
+  const oy = fit === 'width' ? (top / 100) * height + (focus[1] / 100 - 0.5) * imgH : (focus[1] / 100) * height;
   const tx = clamp(x, s, ox, width);
   const ty = clamp(y, s, oy, height);
 
   const transform = `translate(${tx}px, ${ty}px) scale(${s})`;
-  const transformOrigin = `${focus[0]}% ${focus[1]}%`;
+  const transformOrigin = `${ox}px ${oy}px`;
 
   return (
     <div style={{position: 'absolute', inset: 0, overflow: 'hidden', background: '#111'}}>
       {file ? (
-        <Img
-          src={staticFile(file)}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: `${focus[0]}% ${focus[1]}%`,
-            transformOrigin,
-            transform,
-            filter: `contrast(1.08) brightness(${exposure})`,
-          }}
-        />
+        <div style={{position: 'absolute', inset: 0, background: bg, transformOrigin, transform, filter: `contrast(1.08) brightness(${exposure})`}}>
+          {fit === 'width' ? (
+            <Img src={staticFile(file)} style={{position: 'absolute', left: 0, width: '100%', height: imgH, top: (top / 100) * height - imgH / 2}} />
+          ) : (
+            <Img
+              src={staticFile(file)}
+              style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: `${focus[0]}% ${focus[1]}%`}}
+            />
+          )}
+        </div>
       ) : (
         <>
           <div

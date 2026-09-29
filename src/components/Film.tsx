@@ -24,7 +24,7 @@ export const Analog: React.FC = () => {
   const flicker = 0.012 + random(`flicker-${frame}`) * 0.022;
   return (
     <AbsoluteFill style={{pointerEvents: 'none'}}>
-      <AbsoluteFill style={{background: 'radial-gradient(ellipse 80% 70% at 50% 48%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.38) 100%)'}} />
+      <AbsoluteFill style={{background: 'radial-gradient(ellipse 80% 70% at 50% 48%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.16) 100%)'}} />
       <AbsoluteFill style={{background: '#000', opacity: flicker}} />
     </AbsoluteFill>
   );

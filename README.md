@@ -6,7 +6,7 @@ Vertical 9:16 · 1080×1920 · 30 fps · 18.6 s (558 frames).
 
 | Archivo | Qué controla |
 |---|---|
-| `public/photos/` | **Tus fotos reales de BPLUS** (jpg/png). Único material de producto. |
+| `public/photos/` | **Tus fotos reales de BPLUS** (jpg/png/webp). Único material de producto. Hoy: `negro-redondo.jpg`, `verde-rectangular.webp`. |
 | `src/casting.ts` | Qué foto va en cada slot y su punto de foco (`focus: [x%, y%]`) para crops y zooms. |
 | `src/timeline.ts` | El edit: duración de cada plano (frames), zoom, paneo, freeze, jump cuts, exposición, flashes. |
 | `src/copy.ts` | Todo el texto en pantalla (3 intervenciones), colores y tipografías. |
@@ -39,3 +39,12 @@ npm run render     # out/bplus-reel.mp4
 
 En este contenedor cloud hay que pasar el navegador:
 `--browser-executable=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell`
+
+## Referencia (Ben & Frank, *Horoscotopos / Info(ver)ciales*) → qué se tomó
+
+- Serif condensada editorial para títulos y color mostaza en momentos serif (cierre).
+- Página catálogo con etiquetas que se escriben letra a letra.
+- Estallidos de exposición (el frame se quema a blanco y regresa) como puntuación.
+- Contraste profundo, grano y planos que respiran entre ráfagas.
+
+No se copió: los personajes, el humor narrativo, los subtítulos ni la X roja.
